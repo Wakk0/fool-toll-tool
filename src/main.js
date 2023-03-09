@@ -27,7 +27,7 @@ const matomoOptions = {
   debug: false,
   userId: undefined,
   cookieDomain: undefined,
-  domains: undefined,
+  domains: wakk0.github.io,
   preInitActions: [],
   trackSiteSearch: false,
   crossOrigin: undefined,
