@@ -17,7 +17,6 @@
             </v-sheet>
           </v-col>
         </v-row>
-        <!-- <v-img src="src/assets/toll-logo.png" width="150px"/> -->
         <v-img src="src/assets/pngegg.png" width="200px"/>
       </v-container>
     </v-main>  

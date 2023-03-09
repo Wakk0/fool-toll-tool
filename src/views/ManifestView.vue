@@ -43,8 +43,8 @@ const processFile = () => {
       if(items.value[i].postcode == toll_data[x].postcode){
         if(items.value[i].suburb.toUpperCase() == toll_data[x].suburb){
           console.log('Matching:',items.value[i])
-          items.value[i].status = 0
-          newItems.push(items.value[i])
+          // items.value[i].status = 0
+          // newItems.push(items.value[i])
           break
         } 
       }
