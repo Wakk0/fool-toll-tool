@@ -5,13 +5,20 @@
         <v-btn v-if="jsonfile" @click.prevent="processFile" color="teal-accent-4" class="mb-2">Check Addresses</v-btn>
       </template>
     </v-file-input>
-    <v-card  v-if="jsonfile" :title="tableTitle" class="ma-4 bg-teal-darken-1">
+    <v-card v-if="jsonfile" :title="tableTitle" class="ma-4 bg-teal-darken-1">
       <v-card-text>
-        <v-data-table :headers="headers" :items="items" class="elevation-6" density="compact" item-key="shipment">
+        <v-data-table :headers="headers" :items="items" class="elevation-6" density="compact" item-key="shipment" show-expand>
           <template v-slot:item.shipmentid="{ item }">
             <v-chip :color="getColor(item.raw.status)">
               {{ item.raw.shipmentid }}
             </v-chip>
+          </template>
+          <template v-slot:expanded-row="{ columns, item }">
+            <tr v-if="!showInputs">
+              <td :colspan="columns.length">
+                Suggested suburbs base on the postcode: {{ item.raw.rsuburb }}
+              </td>
+            </tr>
           </template>
         </v-data-table>
       </v-card-text>
@@ -42,7 +49,7 @@ const processFile = () => {
     for(let x = 0 ; x < toll_data.length; x++){
       if(items.value[i].postcode == toll_data[x].postcode){
         if(items.value[i].suburb.toUpperCase() == toll_data[x].suburb){
-          console.log('Matching:',items.value[i])
+          // console.log('Matching:',items.value[i])
           // items.value[i].status = 0
           // newItems.push(items.value[i])
           break
@@ -50,10 +57,19 @@ const processFile = () => {
       }
 
       if(x+1 == toll_data.length){
-          console.log('Non-Matching:',items.value[i])
-          items.value[i].status = 1
-          newItems.push(items.value[i])
-        }
+        // console.log('Non-Matching:',items.value[i])
+
+        let suggestions = []
+        toll_data.filter( (address) => {
+          if(address.postcode == items.value[i].postcode){
+            suggestions.push(address.suburb)
+          }
+        })
+
+        items.value[i].status = 1
+        items.value[i].rsuburb = suggestions
+        newItems.push(items.value[i])
+      }
     }
   }
   tableTitle.value = 'Consigments Report'
