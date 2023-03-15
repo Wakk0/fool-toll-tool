@@ -2,8 +2,6 @@
   <v-app id="inspire">
     <v-app-bar flat color="teal-darken-4" title="F00L T0LL T00L">
       <v-container class="fill-height d-flex align-center">
-        <v-btn variant="text" to="/" class="mr-1">Home</v-btn>
-        <v-btn variant="text" to="/manifest-tool">Manifest-Tool</v-btn>
         <v-spacer></v-spacer>
       </v-container>
     </v-app-bar>

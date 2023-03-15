@@ -7,11 +7,6 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: () => import('../views/HomeView.vue')
-    },
-    {
-      path: '/manifest-tool',
-      name: 'Manifest-Tool',
-      component: () => import('../views/ManifestView.vue')
     }
   ]
 })
