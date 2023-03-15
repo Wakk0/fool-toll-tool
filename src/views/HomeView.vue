@@ -113,7 +113,7 @@ const fileChange = async (e) => {
   for(let i = 0; i < shipments.length; i++){
     items.value.push({
       shipmentid: shipments[i].ShipmentID,
-      ppnum: shipments[i].References.reference[1].ReferenceValue,
+      ppnum: shipments[i].References.Reference[1].ReferenceValue,
       address: shipments[i].ConsigneeParty.PhysicalAddress.AddressLine1,
       suburb: shipments[i].ConsigneeParty.PhysicalAddress.Suburb,
       postcode: shipments[i].ConsigneeParty.PhysicalAddress.PostalCode,
