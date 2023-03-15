@@ -16,11 +16,8 @@
           <template v-slot:expanded-row="{ columns, item }">
             <tr v-if="!showInputs">
               <td :colspan="columns.length">
-                Recommended: 
-                <!-- <v-list lines="one"> -->
+                Recommended:
                   <v-list :items="item.raw.recommendations"/>
-                <!-- </v-list> -->
-                <!-- {{ item.raw.recommendations }} -->
               </td>
             </tr>
           </template>
@@ -55,7 +52,7 @@ import { toll_data } from '@/js/toll_data.js'
 
 const headers = ref([
   { title: 'Shipment ID', align: 'start', sortable: false, key: 'shipmentid'},
-  { title: 'Conn #', key: 'conn' },
+  { title: 'PP #', key: 'ppnum' },
   { title: 'Address', key: 'address' },
   { title: 'Suburb', key: 'suburb' },
   { title: 'Postcode', key: 'postcode' },
@@ -116,7 +113,7 @@ const fileChange = async (e) => {
   for(let i = 0; i < shipments.length; i++){
     items.value.push({
       shipmentid: shipments[i].ShipmentID,
-      conn: shipments[i].SpecialInstruction,
+      ppnum: shipments[i].References.reference[1].ReferenceValue,
       address: shipments[i].ConsigneeParty.PhysicalAddress.AddressLine1,
       suburb: shipments[i].ConsigneeParty.PhysicalAddress.Suburb,
       postcode: shipments[i].ConsigneeParty.PhysicalAddress.PostalCode,
