@@ -47,6 +47,12 @@
     <a href="https://github.com/Wakk0/fool-toll-tool">Sources are available in my abandoned GitHub account x-D</a>
   </v-card-text>
  </v-card>
+
+ <v-card title="Version" class="ma-4 bg-teal-darken-1">
+  <v-card-text>
+    1.6.0
+  </v-card-text>
+ </v-card>
 </template>
 
 <script setup>
