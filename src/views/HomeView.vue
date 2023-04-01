@@ -7,7 +7,7 @@
     </v-file-input>
     <v-card v-if="jsonfile" :title="tableTitle" class="ma-4 bg-teal-darken-1">
       <v-card-text>
-        <v-data-table :headers="headers" :items="items" class="elevation-6" density="compact" item-key="shipment" show-expand>
+        <v-data-table v-if="items.length > 0" :headers="headers" :items="items" class="elevation-6" density="compact" item-key="shipment" show-expand>
           <template v-slot:item.shipmentid="{ item }">
             <v-chip :color="getColor(item.raw.status)">
               {{ item.raw.shipmentid }}
@@ -22,6 +22,9 @@
             </tr>
           </template>
         </v-data-table>
+        <div v-else class="bg-red">
+          <strong>All registries match with TOLL addresses</strong>
+        </div>
       </v-card-text>
     </v-card>
   </div>
